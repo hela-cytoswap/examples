@@ -1,6 +1,6 @@
-import { Token } from '@uniswap/sdk-core'
-import { WETH_TOKEN, USDC_TOKEN } from './libs/constants'
-import { FeeAmount } from '@uniswap/v3-sdk'
+import { Token } from '@cytoswap/sdk-core'
+import { FeeAmount } from '@cytoswap/v3-sdk'
+import { USDC_TOKEN, WHLUSD_TOKEN } from './libs/constants'
 
 // Sets if the example should run locally or on chain
 export enum Environment {
@@ -35,7 +35,7 @@ export const CurrentConfig: ExampleConfig = {
   env: Environment.MAINNET,
   rpc: {
     local: 'http://localhost:8545',
-    mainnet: 'https://mainnet.infura.io/v3/0ac57a06f2994538829c14745750d721',
+    mainnet: 'https://mainnet-rpc.helachain.com',
   },
   wallet: {
     address: '0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266',
@@ -44,7 +44,7 @@ export const CurrentConfig: ExampleConfig = {
   },
   pool: {
     token0: USDC_TOKEN,
-    token1: WETH_TOKEN,
+    token1: WHLUSD_TOKEN,
 
     fee: FeeAmount.MEDIUM,
   },

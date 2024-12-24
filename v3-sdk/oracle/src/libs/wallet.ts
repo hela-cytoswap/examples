@@ -1,8 +1,7 @@
 // This file contains code to easily connect to and get information from a wallet on chain
 
-import { Currency } from '@uniswap/sdk-core'
-import { ethers } from 'ethers'
-import { providers } from 'ethers'
+import { Currency } from '@cytoswap/sdk-core'
+import { ethers, providers } from 'ethers'
 import { ERC20_ABI } from './constants'
 import { toReadableAmount } from './conversion'
 
