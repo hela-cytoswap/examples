@@ -1,10 +1,9 @@
+import { Price, Token } from '@cytoswap/sdk-core'
+import ICytoswapV3PoolABI from '@cytoswap/v3-core/artifacts/contracts/interfaces/ICytoswapV3Pool.sol/ICytoswapV3Pool.json'
+import { computePoolAddress, FACTORY_ADDRESS, Pool, tickToPrice } from '@cytoswap/v3-sdk'
 import { ethers } from 'ethers'
-import { computePoolAddress, tickToPrice, Pool } from '@uniswap/v3-sdk'
 import { CurrentConfig } from '../config'
-import { FACTORY_ADDRESS } from '@uniswap/v3-sdk'
 import { createWallet } from './providers'
-import IUniswapV3PoolABI from '@uniswap/v3-core/artifacts/contracts/interfaces/IUniswapV3Pool.sol/IUniswapV3Pool.json'
-import { Price, Token } from '@uniswap/sdk-core'
 
 // constants
 const poolAddress = computePoolAddress({
@@ -18,7 +17,7 @@ const poolAddress = computePoolAddress({
 const wallet = createWallet()
 const poolContract = new ethers.Contract(
   poolAddress,
-  IUniswapV3PoolABI.abi,
+  ICytoswapV3PoolABI.abi,
   wallet
 )
 

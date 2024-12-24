@@ -4,9 +4,9 @@
   "private": true,
   "type": "module",
   "dependencies": {
+    "@cytoswap/sdk-core": "^1.0.8",
+    "@cytoswap/v3-sdk": "^1.0.8",
     "@types/node": "^16.7.13",
-    "@uniswap/sdk-core": "3.1.0",
-    "@uniswap/v3-sdk": "^3.9.0",
     "ethers": "5.7.0",
     "ethers-multicall": "^0.2.3",
     "ts-node": "^10.9.1",

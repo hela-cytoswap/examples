@@ -1,6 +1,6 @@
 ## Overview
 
-This is an example of using multicalls to fetch all tick data of a Uniswap V3 Pool.
+This is an example of using multicalls to fetch all tick data of a Cytoswap V3 Pool.
 This example is not meant to be run in a browser but should instead serve as an example on how to prepare offchain calculations on Pools.
 
 ## Configuration

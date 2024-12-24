@@ -1,7 +1,7 @@
-import { FeeAmount, Pool, TickMath, tickToPrice } from '@uniswap/v3-sdk'
+import { CurrencyAmount, Token } from '@cytoswap/sdk-core'
+import { FeeAmount, Pool, TickMath, tickToPrice } from '@cytoswap/v3-sdk'
 import JSBI from 'jsbi'
-import { TickProcessed, GraphTick, BarChartTick } from './interfaces'
-import { Token, CurrencyAmount } from '@uniswap/sdk-core'
+import { BarChartTick, GraphTick, TickProcessed } from './interfaces'
 
 const MAX_INT128 = JSBI.subtract(
   JSBI.exponentiate(JSBI.BigInt(2), JSBI.BigInt(128)),

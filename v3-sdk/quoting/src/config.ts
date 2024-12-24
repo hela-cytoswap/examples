@@ -1,5 +1,5 @@
-import { Token } from '@uniswap/sdk-core'
-import { FeeAmount } from '@uniswap/v3-sdk'
+import { Token } from '@cytoswap/sdk-core'
+import { FeeAmount } from '@cytoswap/v3-sdk'
 import { USDC_TOKEN, WETH_TOKEN } from './libs/constants'
 
 // Inputs that configure this example to run
@@ -21,7 +21,7 @@ export interface ExampleConfig {
 export const CurrentConfig: ExampleConfig = {
   rpc: {
     local: 'http://localhost:8545',
-    mainnet: '',
+    mainnet: 'https://mainnet-rpc.helachain.com',
   },
   tokens: {
     in: USDC_TOKEN,

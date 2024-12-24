@@ -2,7 +2,7 @@
 
 ## Overview
 
-This is an example of using the Uniswap `web3-react` package and includes running against mainnet and other L2s.
+This is an example of using the Cytoswap `web3-react` package and includes running against mainnet and other L2s.
 
 ## Configuration
 

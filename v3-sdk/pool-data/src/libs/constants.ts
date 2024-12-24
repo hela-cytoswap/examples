@@ -1,26 +1,26 @@
 // This file stores web3 related constants such as addresses, token definitions, ETH currency references and ABI's
 
-import { SupportedChainId, Token } from '@uniswap/sdk-core'
+import { ChainId, Token } from '@cytoswap/sdk-core'
 
 // Addresses
 
 export const POOL_FACTORY_CONTRACT_ADDRESS =
-  '0x1F98431c8aD98523631AE4a59f267346ea31F984'
+  '0x0c0cf6c2901B23762fA3eEccC4F6d1912B08719E'
 
 // Currencies and Tokens
 
-export const WETH_TOKEN = new Token(
-  SupportedChainId.MAINNET,
-  '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2',
+export const WHLUSD_TOKEN = new Token(
+  ChainId.HELA,
+  '0x3a035615e101373FA9BA21c5bEa7FE4026fc40b4',
   18,
-  'WETH',
-  'Wrapped Ether'
+  'WHLUSD',
+  'Wrapped HLUSD'
 )
 
-export const WBTC_TOKEN = new Token(
-  1,
-  '0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599',
-  8,
-  'WBTC',
-  'Wrapped BTC'
+export const USDC_TOKEN = new Token(
+  ChainId.HELA,
+  '0xf5b85320a772b436cb8105441a3dB9bA29437B4a',
+  6,
+  'hUSDC',
+  'HeLa USD Coin'
 )

@@ -1,11 +1,11 @@
-import { CurrencyAmount, Percent, Token } from '@uniswap/sdk-core'
+import { CurrencyAmount, Percent, Token } from '@cytoswap/sdk-core'
 import {
   MintOptions,
   nearestUsableTick,
   NonfungiblePositionManager,
   Pool,
   Position,
-} from '@uniswap/v3-sdk'
+} from '@cytoswap/v3-sdk'
 import { BigNumber, ethers } from 'ethers'
 import { CurrentConfig } from '../config'
 import {
@@ -14,8 +14,8 @@ import {
   MAX_PRIORITY_FEE_PER_GAS,
   NONFUNGIBLE_POSITION_MANAGER_ABI,
   NONFUNGIBLE_POSITION_MANAGER_CONTRACT_ADDRESS,
+  TOKEN_AMOUNT_TO_APPROVE_FOR_TRANSFER,
 } from './constants'
-import { TOKEN_AMOUNT_TO_APPROVE_FOR_TRANSFER } from './constants'
 import { fromReadableAmount } from './conversion'
 import { getPoolInfo } from './pool'
 import {

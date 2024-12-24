@@ -1,14 +1,14 @@
+import ICytoswapV3PoolABI from '@cytoswap/v3-core/artifacts/contracts/interfaces/ICytoswapV3Pool.sol/ICytoswapV3Pool.json'
+import Quoter from '@cytoswap/v3-periphery/artifacts/contracts/lens/Quoter.sol/Quoter.json'
+import { computePoolAddress } from '@cytoswap/v3-sdk'
 import { ethers } from 'ethers'
 import { CurrentConfig } from '../config'
-import { computePoolAddress } from '@uniswap/v3-sdk'
-import Quoter from '@uniswap/v3-periphery/artifacts/contracts/lens/Quoter.sol/Quoter.json'
-import IUniswapV3PoolABI from '@uniswap/v3-core/artifacts/contracts/interfaces/IUniswapV3Pool.sol/IUniswapV3Pool.json'
 import {
   POOL_FACTORY_CONTRACT_ADDRESS,
   QUOTER_CONTRACT_ADDRESS,
 } from '../libs/constants'
+import { fromReadableAmount, toReadableAmount } from '../libs/conversion'
 import { getProvider } from '../libs/providers'
-import { toReadableAmount, fromReadableAmount } from '../libs/conversion'
 
 export async function quote(): Promise<string> {
   const quoterContract = new ethers.Contract(
@@ -46,7 +46,7 @@ async function getPoolConstants(): Promise<{
 
   const poolContract = new ethers.Contract(
     currentPoolAddress,
-    IUniswapV3PoolABI.abi,
+    ICytoswapV3PoolABI.abi,
     getProvider()
   )
   const [token0, token1, fee] = await Promise.all([

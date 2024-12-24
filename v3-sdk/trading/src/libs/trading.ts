@@ -4,7 +4,7 @@ import {
   Percent,
   Token,
   TradeType,
-} from '@uniswap/sdk-core'
+} from '@cytoswap/sdk-core'
 import {
   Pool,
   Route,
@@ -12,18 +12,19 @@ import {
   SwapQuoter,
   SwapRouter,
   Trade,
-} from '@uniswap/v3-sdk'
+} from '@cytoswap/v3-sdk'
 import { ethers } from 'ethers'
 import JSBI from 'jsbi'
 
 import { CurrentConfig } from '../config'
 import {
   ERC20_ABI,
+  MAX_FEE_PER_GAS,
+  MAX_PRIORITY_FEE_PER_GAS,
   QUOTER_CONTRACT_ADDRESS,
   SWAP_ROUTER_ADDRESS,
   TOKEN_AMOUNT_TO_APPROVE_FOR_TRANSFER,
 } from './constants'
-import { MAX_FEE_PER_GAS, MAX_PRIORITY_FEE_PER_GAS } from './constants'
 import { getPoolInfo } from './pool'
 import {
   getProvider,

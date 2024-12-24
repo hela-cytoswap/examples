@@ -1,30 +1,4 @@
-import { BigNumber, ethers } from 'ethers'
-import {
-  ERC20_ABI,
-  NONFUNGIBLE_POSITION_MANAGER_ABI,
-  MAX_FEE_PER_GAS,
-  MAX_PRIORITY_FEE_PER_GAS,
-  NONFUNGIBLE_POSITION_MANAGER_CONTRACT_ADDRESS,
-  V3_SWAP_ROUTER_ADDRESS,
-} from './constants'
-import { TOKEN_AMOUNT_TO_APPROVE_FOR_TRANSFER } from './constants'
-import {
-  getMainnetProvider,
-  sendTransaction,
-  TransactionState,
-} from './providers'
-import {
-  Pool,
-  Position,
-  nearestUsableTick,
-  NonfungiblePositionManager,
-  MintOptions,
-} from '@uniswap/v3-sdk'
-import { CurrentConfig } from '../config'
-import { getPoolInfo } from './pool'
-import { getProvider, getWalletAddress } from './providers'
-import { Percent, CurrencyAmount, Token, Fraction } from '@uniswap/sdk-core'
-import { fromReadableAmount } from './conversion'
+import { CurrencyAmount, Fraction, Percent, Token } from '@cytoswap/sdk-core'
 import {
   AlphaRouter,
   SwapAndAddConfig,
@@ -33,7 +7,33 @@ import {
   SwapToRatioRoute,
   SwapToRatioStatus,
   SwapType,
-} from '@uniswap/smart-order-router'
+} from '@cytoswap/smart-order-router'
+import {
+  MintOptions,
+  nearestUsableTick,
+  NonfungiblePositionManager,
+  Pool,
+  Position,
+} from '@cytoswap/v3-sdk'
+import { BigNumber, ethers } from 'ethers'
+import { CurrentConfig } from '../config'
+import {
+  ERC20_ABI,
+  MAX_FEE_PER_GAS,
+  MAX_PRIORITY_FEE_PER_GAS,
+  NONFUNGIBLE_POSITION_MANAGER_ABI,
+  NONFUNGIBLE_POSITION_MANAGER_CONTRACT_ADDRESS,
+  TOKEN_AMOUNT_TO_APPROVE_FOR_TRANSFER,
+  V3_SWAP_ROUTER_ADDRESS,
+} from './constants'
+import { fromReadableAmount } from './conversion'
+import { getPoolInfo } from './pool'
+import {
+  getMainnetProvider,
+  getProvider, getWalletAddress,
+  sendTransaction,
+  TransactionState,
+} from './providers'
 
 export interface PositionInfo {
   tickLower: number

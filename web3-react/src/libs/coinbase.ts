@@ -11,7 +11,7 @@ export function buildCoinbaseWalletConnector() {
         actions,
         options: {
           url: INPUT_CHAIN_URL,
-          appName: 'Uniswap Example',
+          appName: 'Cytoswap Example',
           reloadOnDisconnect: false,
         },
         onError: onConnectionError,

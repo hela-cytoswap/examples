@@ -1,9 +1,9 @@
-import React, { useCallback, useEffect, useState } from 'react'
-import './Example.css'
-import { Environment, CurrentConfig } from '../config'
-import { Price, Token } from '@uniswap/sdk-core'
-import { getProvider } from '../libs/providers'
+import { Price, Token } from '@cytoswap/sdk-core'
+import { useCallback, useEffect, useState } from 'react'
+import { CurrentConfig, Environment } from '../config'
 import { getAverages } from '../libs/oracle'
+import { getProvider } from '../libs/providers'
+import './Example.css'
 
 const useOnBlockUpdated = (callback: (blockNumber: number) => void) => {
   useEffect(() => {

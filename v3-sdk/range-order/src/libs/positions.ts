@@ -1,12 +1,15 @@
-import { CurrencyAmount, Percent, Token } from '@uniswap/sdk-core'
+import { CurrencyAmount, Percent, Token } from '@cytoswap/sdk-core'
 import {
+  CollectOptions,
   MintOptions,
   nearestUsableTick,
   NonfungiblePositionManager,
   Pool,
   Position,
-} from '@uniswap/v3-sdk'
+  RemoveLiquidityOptions,
+} from '@cytoswap/v3-sdk'
 import { BigNumber, ethers } from 'ethers'
+import JSBI from 'jsbi'
 import { CurrentConfig } from '../config'
 import {
   ERC20_ABI,
@@ -23,8 +26,6 @@ import {
   sendTransaction,
   TransactionState,
 } from './providers'
-import { CollectOptions, RemoveLiquidityOptions } from '@uniswap/v3-sdk'
-import JSBI from 'jsbi'
 
 export interface PositionInfo {
   tickLower: number

@@ -1,17 +1,16 @@
 // This file contains code to easily connect to and get information from a wallet on chain
 
-import { Currency } from '@uniswap/sdk-core'
-import { BigNumber, ethers } from 'ethers'
-import { providers } from 'ethers'
+import { Currency } from '@cytoswap/sdk-core'
+import { BigNumber, ethers, providers } from 'ethers'
+import JSBI from 'jsbi'
 import {
   ERC20_ABI,
-  WETH_ABI,
-  WETH_CONTRACT_ADDRESS,
   MAX_FEE_PER_GAS,
   MAX_PRIORITY_FEE_PER_GAS,
+  WETH_ABI,
+  WETH_CONTRACT_ADDRESS,
 } from './constants'
 import { toReadableAmount } from './conversion'
-import JSBI from 'jsbi'
 import { getProvider, getWalletAddress, sendTransaction } from './providers'
 
 export async function getCurrencyBalance(

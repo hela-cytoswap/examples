@@ -1,29 +1,29 @@
-import React, { useCallback, useEffect, useState } from 'react'
-import './Example.css'
-import { Environment, CurrentConfig } from '../config'
+import { ChainId, Ether, Price, Token } from '@cytoswap/sdk-core'
+import { FeeAmount } from '@cytoswap/v3-sdk'
+import { useCallback, useEffect, useState } from 'react'
+import { CurrentConfig, Environment } from '../config'
 import { getCurrencyBalance } from '../libs/balance'
-import { getPositionInfo, PositionInfo } from '../libs/positions'
-import {
-  getProvider,
-  TransactionState,
-  getWalletAddress,
-} from '../libs/providers'
-import { WETH_TOKEN } from '../libs/constants'
-import { wrapETH } from '../libs/wallet'
-import { FeeAmount } from '@uniswap/v3-sdk'
-import { Ether, Price, Token } from '@uniswap/sdk-core'
-import { getPrice } from '../libs/pool'
+import { WHLUSD_TOKEN } from '../libs/constants'
 import {
   buyWETH,
   getToken1FromMockPool,
   sellWETH,
 } from '../libs/mockMarketMaker'
+import { getPrice } from '../libs/pool'
+import { getPositionInfo, PositionInfo } from '../libs/positions'
 import {
-  TakeProfitOrder,
+  getProvider,
+  getWalletAddress,
+  TransactionState,
+} from '../libs/providers'
+import {
   constructTakeProfitOrder,
   mintTakeProfitOrder,
+  TakeProfitOrder,
   watchTakeProfitOrder,
 } from '../libs/range-order'
+import { wrapETH } from '../libs/wallet'
+import './Example.css'
 
 const useOnBlockUpdated = (callback: (blockNumber: number) => void) => {
   useEffect(() => {
@@ -79,7 +79,7 @@ const Example = () => {
     if (
       Number(balance0) < CurrentConfig.tokens.token0Amount &&
       CurrentConfig.env === Environment.LOCAL &&
-      CurrentConfig.tokens.token0 === WETH_TOKEN &&
+      CurrentConfig.tokens.token0 === WHLUSD_TOKEN &&
       rangeOrder === undefined
     ) {
       wrapETH(CurrentConfig.tokens.token0Amount)
@@ -126,7 +126,13 @@ const Example = () => {
       setMMMBalance1(balance1)
 
       const balance0 = Math.floor(
-        Number(await getCurrencyBalance(provider, address, Ether.onChain(1)))
+        Number(
+          await getCurrencyBalance(
+            provider,
+            address,
+            Ether.onChain(ChainId.HELA)
+          )
+        )
       ).toString()
 
       setMMMBalance0(balance0)

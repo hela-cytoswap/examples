@@ -1,13 +1,13 @@
+import { Pool } from '@cytoswap/v3-sdk'
 import {
-  getTickIndicesInWordRange,
-  getPoolData,
   getAllTicks,
+  getPoolData,
+  getTickIndicesInWordRange,
 } from './libs/fetcher.js'
 import { getProvider } from './libs/providers.js'
 import { tickToWordCompressed } from './libs/utils.js'
-import { Pool } from '@uniswap/v3-sdk'
 
-export {}
+export { }
 
 async function main() {
   // Get current blocknumber and Pooldata

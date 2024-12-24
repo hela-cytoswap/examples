@@ -1,8 +1,7 @@
 // This file contains code to easily connect to and get information from a wallet on chain
 
-import { Currency } from '@uniswap/sdk-core'
-import { BigNumber, ethers } from 'ethers'
-import { providers } from 'ethers'
+import { Currency } from '@cytoswap/sdk-core'
+import { BigNumber, ethers, providers } from 'ethers'
 import JSBI from 'jsbi'
 
 import {
@@ -10,10 +9,10 @@ import {
   MAX_FEE_PER_GAS,
   MAX_PRIORITY_FEE_PER_GAS,
   WETH_ABI,
-  WETH_CONTRACT_ADDRESS,
+  WHLUSD_CONTRACT_ADDRESS,
 } from './constants'
-import { getProvider, getWalletAddress, sendTransaction } from './providers'
 import { toReadableAmount } from './conversion'
+import { getProvider, getWalletAddress, sendTransaction } from './providers'
 
 export async function getCurrencyBalance(
   provider: providers.Provider,
@@ -47,7 +46,7 @@ export async function wrapETH(eth: number) {
   }
 
   const wethContract = new ethers.Contract(
-    WETH_CONTRACT_ADDRESS,
+    WHLUSD_CONTRACT_ADDRESS,
     WETH_ABI,
     provider
   )
@@ -58,7 +57,7 @@ export async function wrapETH(eth: number) {
       .mul(JSBI.exponentiate(JSBI.BigInt(10), JSBI.BigInt(18)).toString())
       .toString(),
     from: address,
-    to: WETH_CONTRACT_ADDRESS,
+    to: WHLUSD_CONTRACT_ADDRESS,
     maxFeePerGas: MAX_FEE_PER_GAS,
     maxPriorityFeePerGas: MAX_PRIORITY_FEE_PER_GAS,
   }
@@ -75,7 +74,7 @@ export async function unwrapETH(eth: number) {
   }
 
   const wethContract = new ethers.Contract(
-    WETH_CONTRACT_ADDRESS,
+    WHLUSD_CONTRACT_ADDRESS,
     WETH_ABI,
     provider
   )
@@ -87,7 +86,7 @@ export async function unwrapETH(eth: number) {
         .toString(),
     ]),
     from: address,
-    to: WETH_CONTRACT_ADDRESS,
+    to: WHLUSD_CONTRACT_ADDRESS,
     maxFeePerGas: MAX_FEE_PER_GAS,
     maxPriorityFeePerGas: MAX_PRIORITY_FEE_PER_GAS,
   }

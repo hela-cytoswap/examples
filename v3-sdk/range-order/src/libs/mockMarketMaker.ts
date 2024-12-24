@@ -1,3 +1,5 @@
+import { CurrencyAmount, Percent, Token, TradeType } from '@cytoswap/sdk-core'
+import ICytoswapV3PoolABI from '@cytoswap/v3-core/artifacts/contracts/interfaces/ICytoswapV3Pool.sol/ICytoswapV3Pool.json'
 import {
   computePoolAddress,
   Pool,
@@ -6,8 +8,11 @@ import {
   SwapQuoter,
   SwapRouter,
   Trade,
-} from '@uniswap/v3-sdk'
+} from '@cytoswap/v3-sdk'
+import { BigNumber, ethers } from 'ethers'
+import JSBI from 'jsbi'
 import { CurrentConfig } from '../config'
+import { getCurrencyBalance } from './balance'
 import {
   ERC20_ABI,
   MAX_FEE_PER_GAS,
@@ -16,16 +21,11 @@ import {
   QUOTER_CONTRACT_ADDRESS,
   V3_SWAP_ROUTER_ADDRESS,
   WETH_ABI,
-  WETH_CONTRACT_ADDRESS,
+  WHLUSD_CONTRACT_ADDRESS,
 } from './constants'
-import { BigNumber, ethers } from 'ethers'
-import { getProvider, TransactionState } from './providers'
-import IUniswapV3PoolABI from '@uniswap/v3-core/artifacts/contracts/interfaces/IUniswapV3Pool.sol/IUniswapV3Pool.json'
-import { CurrencyAmount, Percent, Token, TradeType } from '@uniswap/sdk-core'
 import { fromReadableAmount } from './conversion'
 import { getPoolInfo } from './pool'
-import JSBI from 'jsbi'
-import { getCurrencyBalance } from './balance'
+import { getProvider, TransactionState } from './providers'
 
 // MMM buys WETH on the observed Pool every time this function is called. For use on local chain only.
 export async function buyWETH() {
@@ -221,7 +221,7 @@ export async function getToken1FromMockPool(sellETHAmount: number) {
 
   const poolContract = new ethers.Contract(
     mockPoolAddress,
-    IUniswapV3PoolABI.abi,
+    ICytoswapV3PoolABI.abi,
     getProvider()
   )
 
@@ -353,7 +353,7 @@ async function wrapETHMMM(eth: number) {
   const wallet = getMMMWallet()
 
   const wethContract = new ethers.Contract(
-    WETH_CONTRACT_ADDRESS,
+    WHLUSD_CONTRACT_ADDRESS,
     WETH_ABI,
     wallet
   )
@@ -364,7 +364,7 @@ async function wrapETHMMM(eth: number) {
       .mul(JSBI.exponentiate(JSBI.BigInt(10), JSBI.BigInt(18)).toString())
       .toString(),
     from: address,
-    to: WETH_CONTRACT_ADDRESS,
+    to: WHLUSD_CONTRACT_ADDRESS,
     maxFeePerGas: MAX_FEE_PER_GAS,
     maxPriorityFeePerGas: MAX_PRIORITY_FEE_PER_GAS,
     gasLimit: '1000000',

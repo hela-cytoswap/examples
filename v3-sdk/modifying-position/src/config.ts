@@ -1,6 +1,6 @@
-import { Token } from '@uniswap/sdk-core'
-import { FeeAmount } from '@uniswap/v3-sdk'
-import { DAI_TOKEN, USDC_TOKEN } from './libs/constants'
+import { Token } from '@cytoswap/sdk-core'
+import { FeeAmount } from '@cytoswap/v3-sdk'
+import { USDC_TOKEN, USDT_TOKEN } from './libs/constants'
 
 // Sets if the example should run locally or on chain
 export enum Environment {
@@ -34,10 +34,10 @@ export interface ExampleConfig {
 // Example Configuration
 
 export const CurrentConfig: ExampleConfig = {
-  env: Environment.LOCAL,
+  env: Environment.MAINNET,
   rpc: {
     local: 'http://localhost:8545',
-    mainnet: '',
+    mainnet: 'https://mainnet-rpc.helachain.com',
   },
   wallet: {
     address: '0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266',
@@ -47,7 +47,7 @@ export const CurrentConfig: ExampleConfig = {
   tokens: {
     token0: USDC_TOKEN,
     token0Amount: 1000,
-    token1: DAI_TOKEN,
+    token1: USDT_TOKEN,
     token1Amount: 1000,
     poolFee: FeeAmount.LOW,
     fractionToRemove: 1,
