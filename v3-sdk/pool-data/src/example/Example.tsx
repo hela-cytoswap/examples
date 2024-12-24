@@ -1,18 +1,18 @@
-import React, { useState, useCallback, useEffect } from 'react'
-import './Example.css'
-import { CurrentConfig } from '../config'
-import { getFullPool } from '../libs/pool-data'
-import { BarChartTick } from '../libs/interfaces'
+import { Pool } from '@cytoswap/v3-sdk'
+import { useCallback, useEffect, useState } from 'react'
 import {
-  BarChart,
   Bar,
-  ResponsiveContainer,
+  BarChart,
   Cell,
+  ResponsiveContainer,
+  Tooltip,
   XAxis,
   YAxis,
-  Tooltip,
 } from 'recharts'
-import { Pool } from '@uniswap/v3-sdk'
+import { CurrentConfig } from '../config'
+import { BarChartTick } from '../libs/interfaces'
+import { getFullPool } from '../libs/pool-data'
+import './Example.css'
 
 export interface PoolData {
   pool: Pool

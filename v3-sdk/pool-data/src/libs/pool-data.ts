@@ -1,12 +1,12 @@
-import { ethers } from 'ethers'
-import { Tick, computePoolAddress, Pool, TickMath } from '@uniswap/v3-sdk'
-import IUniswapV3PoolABI from '@uniswap/v3-core/artifacts/contracts/interfaces/IUniswapV3Pool.sol/IUniswapV3Pool.json'
-import { POOL_FACTORY_CONTRACT_ADDRESS } from './constants'
-import { getMainnetProvider } from './providers'
+import ICytoswapV3PoolABI from '@cytoswap/v3-core/artifacts/contracts/interfaces/ICytoswapV3Pool.sol/ICytoswapV3Pool.json'
+import { computePoolAddress, Pool, Tick, TickMath } from '@cytoswap/v3-sdk'
 import axios from 'axios'
+import { ethers } from 'ethers'
 import { CurrentConfig } from '../config'
-import { BarChartTick, GraphTick } from './interfaces'
 import { createBarChartTicks } from './active-liquidity'
+import { POOL_FACTORY_CONTRACT_ADDRESS } from './constants'
+import { BarChartTick, GraphTick } from './interfaces'
+import { getMainnetProvider } from './providers'
 
 export async function getFullPool(): Promise<{
   pool: Pool
@@ -21,7 +21,7 @@ export async function getFullPool(): Promise<{
 
   const poolContract = new ethers.Contract(
     poolAddress,
-    IUniswapV3PoolABI.abi,
+    ICytoswapV3PoolABI.abi,
     getMainnetProvider()
   )
   const [slot0, liquidity, graphTicks] = await Promise.all([
@@ -112,7 +112,7 @@ async function getTickDataFromSubgraph(
   })
 
   const response = await axios.post(
-    'https://api.thegraph.com/subgraphs/name/uniswap/uniswap-v3',
+    'https://subgraph.snapresearch.xyz/subgraphs/name/cytoswap-mainnet',
     ticksQuery,
     {
       headers: {
