@@ -1,6 +1,6 @@
 ## Overview
 
-This is an example of the Price Oracle observation functionality of a Uniswap V3 Pool
+This is an example of the Price Oracle observation functionality of a Cytoswap V3 Pool
 
 ## Configuration
 
