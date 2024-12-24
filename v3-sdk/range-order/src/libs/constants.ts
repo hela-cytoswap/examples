@@ -1,37 +1,37 @@
 // This file stores web3 related constants such as addresses, token definitions, ETH currency references and ABI's
 
-import { Ether, SupportedChainId, Token } from '@uniswap/sdk-core'
+import { ChainId, Ether, Token } from '@cytoswap/sdk-core'
 
 // Addresses
 
 export const POOL_FACTORY_CONTRACT_ADDRESS =
-  '0x1F98431c8aD98523631AE4a59f267346ea31F984'
+  '0x0c0cf6c2901B23762fA3eEccC4F6d1912B08719E'
 export const NONFUNGIBLE_POSITION_MANAGER_CONTRACT_ADDRESS =
-  '0xC36442b4a4522E871399CD717aBDD847Ab11FE88'
+  '0xA0AfADE4B0481C6fF44E26e3Fe75c8AcC54842CA'
 export const V3_SWAP_ROUTER_ADDRESS =
-  '0xE592427A0AEce92De3Edee1F18E0157C05861564'
-export const WETH_CONTRACT_ADDRESS =
-  '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2'
+  '0x86a869e601cf255D9eca76Aac93783CA3AAe7a7c'
+export const WHLUSD_CONTRACT_ADDRESS =
+  '0x3a035615e101373FA9BA21c5bEa7FE4026fc40b4'
 export const QUOTER_CONTRACT_ADDRESS =
-  '0x61fFE014bA17989E743c5F6cB21bF9697530B21e'
+  '0x94Cc1c1F3BBf2eB205b37a82155ca25F9c9D5621'
 
 // Currencies and Tokens
-export const ETH = Ether.onChain(SupportedChainId.MAINNET)
+export const HLUSD = Ether.onChain(ChainId.HELA)
 
-export const WETH_TOKEN = new Token(
-  SupportedChainId.MAINNET,
-  '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2',
+export const WHLUSD_TOKEN = new Token(
+  ChainId.HELA,
+  '0x3a035615e101373FA9BA21c5bEa7FE4026fc40b4',
   18,
-  'WETH',
-  'Wrapped Ether'
+  'WHLUSD',
+  'Wrapped HLUSD'
 )
 
 export const USDT_TOKEN = new Token(
-  SupportedChainId.MAINNET,
-  '0xdAC17F958D2ee523a2206206994597C13D831ec7',
+  ChainId.HELA,
+  '0xD3442073FA7cCF8a7c39d95dC125Cd59497aA078',
   6,
-  'USDT',
-  'USD//T'
+  'hUSDT',
+  'HeLa Tether'
 )
 
 // Transactions

@@ -4,26 +4,29 @@ import {
   Percent,
   Price,
   Token,
-} from '@uniswap/sdk-core'
+} from '@cytoswap/sdk-core'
 import {
-  Position,
+  CollectOptions,
+  MintOptions,
+  NonfungiblePositionManager,
   Pool,
+  Position,
+  RemoveLiquidityOptions,
   nearestUsableTick,
   priceToClosestTick,
-  NonfungiblePositionManager,
-  MintOptions,
-  CollectOptions,
-  RemoveLiquidityOptions,
   tickToPrice,
-} from '@uniswap/v3-sdk'
-import { getPoolInfo, getPrice } from './pool'
+} from '@cytoswap/v3-sdk'
+import { ethers } from 'ethers'
+import JSBI from 'jsbi'
 import { CurrentConfig } from '../config'
-import { fromReadableAmount } from './conversion'
 import {
   MAX_FEE_PER_GAS,
   MAX_PRIORITY_FEE_PER_GAS,
   NONFUNGIBLE_POSITION_MANAGER_CONTRACT_ADDRESS,
 } from './constants'
+import { fromReadableAmount } from './conversion'
+import { getPoolInfo, getPrice } from './pool'
+import { getPositionInfo, getTokenTransferApproval } from './positions'
 import {
   TransactionState,
   getProvider,
@@ -31,9 +34,6 @@ import {
   getWalletAddress,
   sendTransaction,
 } from './providers'
-import { getPositionInfo, getTokenTransferApproval } from './positions'
-import JSBI from 'jsbi'
-import { ethers } from 'ethers'
 
 export interface TakeProfitOrder {
   targetTick: number

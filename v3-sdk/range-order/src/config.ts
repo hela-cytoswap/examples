@@ -1,6 +1,6 @@
-import { Token } from '@uniswap/sdk-core'
-import { FeeAmount } from '@uniswap/v3-sdk'
-import { USDT_TOKEN, WETH_TOKEN } from './libs/constants'
+import { Token } from '@cytoswap/sdk-core'
+import { FeeAmount } from '@cytoswap/v3-sdk'
+import { USDT_TOKEN, WHLUSD_TOKEN } from './libs/constants'
 
 // Sets if the example should run locally or on chain
 export enum Environment {
@@ -44,10 +44,10 @@ export interface ExampleConfig {
 // Example Configuration
 
 export const CurrentConfig: ExampleConfig = {
-  env: Environment.LOCAL,
+  env: Environment.MAINNET,
   rpc: {
     local: 'http://localhost:8545',
-    mainnet: 'https://mainnet.infura.io/v3/0ac57a06f2994538829c14745750d721',
+    mainnet: 'https://mainnet-rpc.helachain.com',
   },
   wallet: {
     address: '0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266',
@@ -55,7 +55,7 @@ export const CurrentConfig: ExampleConfig = {
       '0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80',
   },
   tokens: {
-    token0: WETH_TOKEN,
+    token0: WHLUSD_TOKEN,
     token0Amount: 1,
     token1: USDT_TOKEN,
     token1Amount: 0,
@@ -70,7 +70,7 @@ export const CurrentConfig: ExampleConfig = {
   mockMarketMakerPool: {
     buyAmount: 250,
     sellAmount: 250,
-    token0: WETH_TOKEN,
+    token0: WHLUSD_TOKEN,
     token1: USDT_TOKEN,
     poolFee: FeeAmount.LOW,
   },
