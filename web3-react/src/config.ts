@@ -18,6 +18,6 @@ export const CurrentConfig: ExampleConfig = {
   chain: Chain.MAINNET,
   rpc: {
     polygon: '',
-    mainnet: '',
+    mainnet: 'https://mainnet-rpc.helachain.com',
   },
 }

@@ -1,7 +1,7 @@
 import { Chain, CurrentConfig } from '../config'
 
 // Chains
-const MAINNET_CHAIN_ID = 1
+const MAINNET_CHAIN_ID = 8668
 const POLYGON_CHAIN_ID = 137
 
 export const INPUT_CHAIN_ID = CurrentConfig.chain === Chain.POLYGON ? POLYGON_CHAIN_ID : MAINNET_CHAIN_ID
@@ -26,9 +26,9 @@ type ChainInfo = {
 
 export const CHAIN_INFO: { [key: string]: ChainInfo } = {
   [MAINNET_CHAIN_ID]: {
-    explorer: 'https://etherscan.io/',
-    label: 'Ethereum',
-    nativeCurrency: { name: 'Ether', symbol: 'ETH', decimals: 18 },
+    explorer: 'https://helascan.io/',
+    label: 'HeLa',
+    nativeCurrency: { name: 'HLUSD', symbol: 'HLUSD', decimals: 18 },
     rpcUrl: CurrentConfig.rpc.mainnet,
   },
   [POLYGON_CHAIN_ID]: {
