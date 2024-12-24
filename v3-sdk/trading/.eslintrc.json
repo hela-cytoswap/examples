@@ -28,7 +28,8 @@
                 "semi": false,
                 "singleQuote": true,
                 "printWidth": 80,
-                "bracketSameLine": true
+                "bracketSameLine": true,
+                "endOfLine": "auto"
             }
         ],
         "typescript-sort-keys/string-enum": [
