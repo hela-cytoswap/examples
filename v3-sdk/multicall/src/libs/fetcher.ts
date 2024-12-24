@@ -1,11 +1,11 @@
-import { FeeAmount, Pool, Tick } from '@uniswap/v3-sdk'
+import { Token } from '@cytoswap/sdk-core'
+import ICytoswapV3PoolABI from '@cytoswap/v3-core/artifacts/contracts/interfaces/ICytoswapV3Pool.sol/ICytoswapV3Pool.json' assert { type: 'json' }
+import { FeeAmount, Pool, Tick } from '@cytoswap/v3-sdk'
 import { ethers } from 'ethers'
-import IUniswapV3PoolABI from '@uniswap/v3-core/artifacts/contracts/interfaces/IUniswapV3Pool.sol/IUniswapV3Pool.json' assert { type: 'json' }
+import { Contract, Provider } from 'ethers-multicall'
+import JSBI from 'jsbi'
 import { CurrentConfig } from '../config.js'
 import { getProvider } from './providers.js'
-import { Token } from '@uniswap/sdk-core'
-import JSBI from 'jsbi'
-import { Contract, Provider } from 'ethers-multicall'
 
 export interface PoolData {
   address: string
@@ -26,7 +26,7 @@ export async function getPoolData(blockNum: number): Promise<PoolData> {
   )
   const poolContract = new ethers.Contract(
     poolAddress,
-    IUniswapV3PoolABI.abi,
+    ICytoswapV3PoolABI.abi,
     getProvider()
   )
 
@@ -61,7 +61,7 @@ export async function getTickIndicesInWordRange(
 ): Promise<number[]> {
   const multicallProvider = new Provider(getProvider())
   await multicallProvider.init()
-  const poolContract = new Contract(poolAddress, IUniswapV3PoolABI.abi)
+  const poolContract = new Contract(poolAddress, ICytoswapV3PoolABI.abi)
 
   const calls: any[] = []
   const wordPosIndices: number[] = []
@@ -104,7 +104,7 @@ export async function getAllTicks(
 ): Promise<Tick[]> {
   const multicallProvider = new Provider(getProvider())
   await multicallProvider.init()
-  const poolContract = new Contract(poolAddress, IUniswapV3PoolABI.abi)
+  const poolContract = new Contract(poolAddress, ICytoswapV3PoolABI.abi)
 
   const calls: any[] = []
 
