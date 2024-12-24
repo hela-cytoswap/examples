@@ -1,32 +1,31 @@
+import { ChainId, CurrencyAmount, Percent, Token, TradeType } from '@cytoswap/sdk-core'
 import {
   AlphaRouter,
-  ChainId,
   SwapOptionsSwapRouter02,
   SwapRoute,
   SwapType,
-} from '@uniswap/smart-order-router'
-import { TradeType, CurrencyAmount, Percent, Token } from '@uniswap/sdk-core'
+} from '@cytoswap/smart-order-router'
+import { ethers } from 'ethers'
 import { CurrentConfig } from '../config'
 import {
-  getMainnetProvider,
-  getWalletAddress,
-  sendTransaction,
-  TransactionState,
-  getProvider,
-} from './providers'
-import {
+  ERC20_ABI,
   MAX_FEE_PER_GAS,
   MAX_PRIORITY_FEE_PER_GAS,
-  ERC20_ABI,
   TOKEN_AMOUNT_TO_APPROVE_FOR_TRANSFER,
   V3_SWAP_ROUTER_ADDRESS,
 } from './constants'
 import { fromReadableAmount } from './conversion'
-import { ethers } from 'ethers'
+import {
+  getMainnetProvider,
+  getProvider,
+  getWalletAddress,
+  sendTransaction,
+  TransactionState,
+} from './providers'
 
 export async function generateRoute(): Promise<SwapRoute | null> {
   const router = new AlphaRouter({
-    chainId: ChainId.MAINNET,
+    chainId: ChainId.HELA,
     provider: getMainnetProvider(),
   })
 

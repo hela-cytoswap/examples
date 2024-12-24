@@ -1,7 +1,6 @@
-import React, { useCallback, useEffect, useState } from 'react'
-import './Example.css'
-import { Environment, CurrentConfig } from '../config'
-import { getCurrencyBalance, wrapETH } from '../libs/wallet'
+import { SwapRoute } from '@cytoswap/smart-order-router'
+import { useCallback, useEffect, useState } from 'react'
+import { CurrentConfig, Environment } from '../config'
 import {
   connectBrowserExtensionWallet,
   getProvider,
@@ -9,7 +8,8 @@ import {
   TransactionState,
 } from '../libs/providers'
 import { executeRoute, generateRoute } from '../libs/routing'
-import { SwapRoute } from '@uniswap/smart-order-router'
+import { getCurrencyBalance, wrapETH } from '../libs/wallet'
+import './Example.css'
 
 const useOnBlockUpdated = (callback: (blockNumber: number) => void) => {
   useEffect(() => {
