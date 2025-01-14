@@ -19,8 +19,6 @@ import { BigNumber, ethers } from 'ethers'
 import { CurrentConfig } from '../config'
 import {
   ERC20_ABI,
-  MAX_FEE_PER_GAS,
-  MAX_PRIORITY_FEE_PER_GAS,
   NONFUNGIBLE_POSITION_MANAGER_ABI,
   NONFUNGIBLE_POSITION_MANAGER_CONTRACT_ADDRESS,
   TOKEN_AMOUNT_TO_APPROVE_FOR_TRANSFER,
@@ -30,7 +28,8 @@ import { fromReadableAmount } from './conversion'
 import { getPoolInfo } from './pool'
 import {
   getMainnetProvider,
-  getProvider, getWalletAddress,
+  getProvider,
+  getWalletAddress,
   sendTransaction,
   TransactionState,
 } from './providers'
@@ -349,8 +348,6 @@ export async function mintPosition(): Promise<TransactionState> {
     to: NONFUNGIBLE_POSITION_MANAGER_CONTRACT_ADDRESS,
     value: value,
     from: address,
-    maxFeePerGas: MAX_FEE_PER_GAS,
-    maxPriorityFeePerGas: MAX_PRIORITY_FEE_PER_GAS,
   }
 
   return sendTransaction(transaction)
