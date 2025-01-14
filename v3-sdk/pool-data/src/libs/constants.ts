@@ -13,8 +13,8 @@ export const WHLUSD_TOKEN = new Token(
   ChainId.HELA,
   '0x3a035615e101373FA9BA21c5bEa7FE4026fc40b4',
   18,
-  'WHLUSD',
-  'Wrapped HLUSD'
+  'HLUSD',
+  'HLUSD'
 )
 
 export const USDC_TOKEN = new Token(

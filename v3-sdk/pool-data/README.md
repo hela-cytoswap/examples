@@ -22,12 +22,11 @@ The configuration includes control of the environment as well as inputs to the e
 
 ### Get a mainnet RPC URL
 
-1. Create an API key using any of the [Ethereum API providers](https://docs.ethers.io/v5/api/providers/) and grab the respective RPC URL, eg `https://mainnet.infura.io/v3/0ac57a06f2994538829c14745750d721`
-2. Set that as the value of the `mainnet` `rpc` value inside the [config](./src/config.ts).
+1. Set that as the value of the `mainnet` `rpc` value inside the [config](./src/config.ts).
 
 ### Choose tokens and fee
 
-By default, this example displays the WBTC/ETH pool with MEDIUM fee. To display any other deployed [pool](https://info.uniswap.org/#/pools), overwrite the values in the [config](./src/config.ts).
+By default, this example displays the USDC/HLUSD pool with MEDIUM fee. To display any other deployed [pool](https://info.cytoswap.com/#/pools), overwrite the values in the [config](./src/config.ts).
 
 ### Start the web interface
 
