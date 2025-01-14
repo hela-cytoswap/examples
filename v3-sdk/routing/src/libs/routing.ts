@@ -1,4 +1,10 @@
-import { ChainId, CurrencyAmount, Percent, Token, TradeType } from '@cytoswap/sdk-core'
+import {
+  ChainId,
+  CurrencyAmount,
+  Percent,
+  Token,
+  TradeType,
+} from '@cytoswap/sdk-core'
 import {
   AlphaRouter,
   SwapOptionsSwapRouter02,
@@ -9,8 +15,6 @@ import { ethers } from 'ethers'
 import { CurrentConfig } from '../config'
 import {
   ERC20_ABI,
-  MAX_FEE_PER_GAS,
-  MAX_PRIORITY_FEE_PER_GAS,
   TOKEN_AMOUNT_TO_APPROVE_FOR_TRANSFER,
   V3_SWAP_ROUTER_ADDRESS,
 } from './constants'
@@ -74,8 +78,6 @@ export async function executeRoute(
     to: V3_SWAP_ROUTER_ADDRESS,
     value: route?.methodParameters?.value,
     from: walletAddress,
-    maxFeePerGas: MAX_FEE_PER_GAS,
-    maxPriorityFeePerGas: MAX_PRIORITY_FEE_PER_GAS,
   })
 
   return res
