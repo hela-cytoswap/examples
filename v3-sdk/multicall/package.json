@@ -1,34 +1,26 @@
 {
   "name": "multicall",
-  "version": "0.1.0",
-  "private": true,
-  "type": "module",
-  "dependencies": {
-    "@cytoswap/sdk-core": "^1.0.8",
-    "@cytoswap/v3-sdk": "^1.0.8",
-    "@types/node": "^16.7.13",
-    "ethers": "5.7.0",
-    "ethers-multicall": "^0.2.3",
-    "ts-node": "^10.9.1",
-    "typescript": "^4.4.2"
-  },
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/main.ts",
   "scripts": {
-    "start": "ts-node --esm src/main.ts",
+    "build": "tsc",
+    "start": "tsc && ts-node src/main.ts",
     "lint": "yarn eslint .",
     "install:chain": "curl -L https://foundry.paradigm.xyz | bash && clear && echo $0 | exec && foundryup",
     "start:chain": "anvil --chain-id 1337 --fork-url"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@cytoswap/sdk-core": "^1.0.8",
+    "@cytoswap/v3-sdk": "^1.0.8",
+    "@types/node": "^22.10.6",
+    "ethers": "5.7.0",
+    "ethers-multicall": "^0.2.3",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.3"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.45.0",
@@ -42,8 +34,5 @@
     "eslint-plugin-typescript-sort-keys": "^2.1.0",
     "eslint-plugin-unused-imports": "^2.0.0",
     "prettier": "^2.8.0"
-  },
-  "engines": {
-    "node": ">=16.0.0"
   }
 }

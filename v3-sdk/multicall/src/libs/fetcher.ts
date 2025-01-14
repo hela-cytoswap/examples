@@ -1,5 +1,5 @@
-import { Token } from '@cytoswap/sdk-core'
-import ICytoswapV3PoolABI from '@cytoswap/v3-core/artifacts/contracts/interfaces/ICytoswapV3Pool.sol/ICytoswapV3Pool.json' assert { type: 'json' }
+import { ChainId, Token } from '@cytoswap/sdk-core'
+import ICytoswapV3PoolABI from '@cytoswap/v3-core/artifacts/contracts/interfaces/ICytoswapV3Pool.sol/ICytoswapV3Pool.json'
 import { FeeAmount, Pool, Tick } from '@cytoswap/v3-sdk'
 import { ethers } from 'ethers'
 import { Contract, Provider } from 'ethers-multicall'
@@ -59,7 +59,7 @@ export async function getTickIndicesInWordRange(
   startWord: number,
   endWord: number
 ): Promise<number[]> {
-  const multicallProvider = new Provider(getProvider())
+  const multicallProvider = new Provider(getProvider(), ChainId.HELA)
   await multicallProvider.init()
   const poolContract = new Contract(poolAddress, ICytoswapV3PoolABI.abi)
 

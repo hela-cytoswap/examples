@@ -33,6 +33,6 @@ export const CurrentConfig: ExampleConfig = {
   pool: {
     token0: USDC_TOKEN,
     token1: WHLUSD_TOKEN,
-    fee: FeeAmount.MEDIUM,
+    fee: FeeAmount.LOWEST,
   },
 }
