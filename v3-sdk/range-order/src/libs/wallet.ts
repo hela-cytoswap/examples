@@ -4,13 +4,7 @@ import { Currency } from '@cytoswap/sdk-core'
 import { BigNumber, ethers, providers } from 'ethers'
 import JSBI from 'jsbi'
 
-import {
-  ERC20_ABI,
-  MAX_FEE_PER_GAS,
-  MAX_PRIORITY_FEE_PER_GAS,
-  WETH_ABI,
-  WHLUSD_CONTRACT_ADDRESS,
-} from './constants'
+import { ERC20_ABI, WHLUSD_ABI, WHLUSD_CONTRACT_ADDRESS } from './constants'
 import { toReadableAmount } from './conversion'
 import { getProvider, getWalletAddress, sendTransaction } from './providers'
 
@@ -47,7 +41,7 @@ export async function wrapETH(eth: number) {
 
   const wethContract = new ethers.Contract(
     WHLUSD_CONTRACT_ADDRESS,
-    WETH_ABI,
+    WHLUSD_ABI,
     provider
   )
 
@@ -58,8 +52,6 @@ export async function wrapETH(eth: number) {
       .toString(),
     from: address,
     to: WHLUSD_CONTRACT_ADDRESS,
-    maxFeePerGas: MAX_FEE_PER_GAS,
-    maxPriorityFeePerGas: MAX_PRIORITY_FEE_PER_GAS,
   }
 
   await sendTransaction(transaction)
@@ -75,7 +67,7 @@ export async function unwrapETH(eth: number) {
 
   const wethContract = new ethers.Contract(
     WHLUSD_CONTRACT_ADDRESS,
-    WETH_ABI,
+    WHLUSD_ABI,
     provider
   )
 
@@ -87,8 +79,6 @@ export async function unwrapETH(eth: number) {
     ]),
     from: address,
     to: WHLUSD_CONTRACT_ADDRESS,
-    maxFeePerGas: MAX_FEE_PER_GAS,
-    maxPriorityFeePerGas: MAX_PRIORITY_FEE_PER_GAS,
   }
 
   await sendTransaction(transaction)

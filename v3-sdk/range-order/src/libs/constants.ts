@@ -1,4 +1,4 @@
-// This file stores web3 related constants such as addresses, token definitions, ETH currency references and ABI's
+// This file stores web3 related constants such as addresses, token definitions, HLUSD currency references and ABI's
 
 import { ChainId, Ether, Token } from '@cytoswap/sdk-core'
 
@@ -34,11 +34,6 @@ export const USDT_TOKEN = new Token(
   'HeLa Tether'
 )
 
-// Transactions
-
-export const MAX_FEE_PER_GAS = '100000000000'
-export const MAX_PRIORITY_FEE_PER_GAS = '100000000000'
-
 // ABI's
 
 export const ERC20_ABI = [
@@ -64,10 +59,10 @@ export const NONFUNGIBLE_POSITION_MANAGER_ABI = [
   'function positions(uint256 tokenId) external view returns (uint96 nonce, address operator, address token0, address token1, uint24 fee, int24 tickLower, int24 tickUpper, uint128 liquidity, uint256 feeGrowthInside0LastX128, uint256 feeGrowthInside1LastX128, uint128 tokensOwed0, uint128 tokensOwed1)',
 ]
 
-export const WETH_ABI = [
-  // Wrap ETH
+export const WHLUSD_ABI = [
+  // Wrap HLUSD
   'function deposit() payable',
 
-  // Unwrap ETH
+  // Unwrap HLUSD
   'function withdraw(uint wad) public',
 ]

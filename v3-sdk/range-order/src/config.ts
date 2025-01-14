@@ -56,10 +56,10 @@ export const CurrentConfig: ExampleConfig = {
   },
   tokens: {
     token0: WHLUSD_TOKEN,
-    token0Amount: 1,
+    token0Amount: 100,
     token1: USDT_TOKEN,
     token1Amount: 0,
-    poolFee: FeeAmount.HIGH,
+    poolFee: FeeAmount.LOWEST,
   },
   targetPercentageUp: 5,
   mockMarketMakerWallet: {

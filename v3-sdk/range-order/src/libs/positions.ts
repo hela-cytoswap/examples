@@ -13,8 +13,6 @@ import JSBI from 'jsbi'
 import { CurrentConfig } from '../config'
 import {
   ERC20_ABI,
-  MAX_FEE_PER_GAS,
-  MAX_PRIORITY_FEE_PER_GAS,
   NONFUNGIBLE_POSITION_MANAGER_ABI,
   NONFUNGIBLE_POSITION_MANAGER_CONTRACT_ADDRESS,
 } from './constants'
@@ -98,8 +96,6 @@ export async function mintPosition(): Promise<TransactionState> {
     to: NONFUNGIBLE_POSITION_MANAGER_CONTRACT_ADDRESS,
     value: value,
     from: address,
-    maxFeePerGas: MAX_FEE_PER_GAS,
-    maxPriorityFeePerGas: MAX_PRIORITY_FEE_PER_GAS,
   }
 
   return sendTransaction(transaction)
@@ -265,8 +261,6 @@ export async function removeLiquidity(
     to: NONFUNGIBLE_POSITION_MANAGER_CONTRACT_ADDRESS,
     value: value,
     from: address,
-    maxFeePerGas: MAX_FEE_PER_GAS,
-    maxPriorityFeePerGas: MAX_PRIORITY_FEE_PER_GAS,
   }
 
   return sendTransaction(transaction)

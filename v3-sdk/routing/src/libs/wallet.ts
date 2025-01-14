@@ -3,13 +3,7 @@
 import { Currency } from '@cytoswap/sdk-core'
 import { BigNumber, ethers, providers } from 'ethers'
 import JSBI from 'jsbi'
-import {
-  ERC20_ABI,
-  MAX_FEE_PER_GAS,
-  MAX_PRIORITY_FEE_PER_GAS,
-  WETH_ABI,
-  WETH_CONTRACT_ADDRESS,
-} from './constants'
+import { ERC20_ABI, WHLUSD_ABI, WHLUSD_CONTRACT_ADDRESS } from './constants'
 import { toReadableAmount } from './conversion'
 import { getProvider, getWalletAddress, sendTransaction } from './providers'
 
@@ -18,7 +12,7 @@ export async function getCurrencyBalance(
   address: string,
   currency: Currency
 ): Promise<string> {
-  // Handle ETH directly
+  // Handle HLUSD directly
   if (currency.isNative) {
     return ethers.utils.formatEther(await provider.getBalance(address))
   }
@@ -36,17 +30,17 @@ export async function getCurrencyBalance(
   return toReadableAmount(balance, decimals).toString()
 }
 
-// wraps ETH (rounding up to the nearest ETH for decimal places)
-export async function wrapETH(eth: number) {
+// wraps HLUSD (rounding up to the nearest HLUSD for decimal places)
+export async function wrapHLUSD(eth: number) {
   const provider = getProvider()
   const address = getWalletAddress()
   if (!provider || !address) {
-    throw new Error('Cannot wrap ETH without a provider and wallet address')
+    throw new Error('Cannot wrap HLUSD without a provider and wallet address')
   }
 
   const wethContract = new ethers.Contract(
-    WETH_CONTRACT_ADDRESS,
-    WETH_ABI,
+    WHLUSD_CONTRACT_ADDRESS,
+    WHLUSD_ABI,
     provider
   )
 
@@ -56,25 +50,23 @@ export async function wrapETH(eth: number) {
       .mul(JSBI.exponentiate(JSBI.BigInt(10), JSBI.BigInt(18)).toString())
       .toString(),
     from: address,
-    to: WETH_CONTRACT_ADDRESS,
-    maxFeePerGas: MAX_FEE_PER_GAS,
-    maxPriorityFeePerGas: MAX_PRIORITY_FEE_PER_GAS,
+    to: WHLUSD_CONTRACT_ADDRESS,
   }
 
   await sendTransaction(transaction)
 }
 
-// unwraps ETH (rounding up to the nearest ETH for decimal places)
-export async function unwrapETH(eth: number) {
+// unwraps HLUSD (rounding up to the nearest HLUSD for decimal places)
+export async function unwrapHLUSD(eth: number) {
   const provider = getProvider()
   const address = getWalletAddress()
   if (!provider || !address) {
-    throw new Error('Cannot unwrap ETH without a provider and wallet address')
+    throw new Error('Cannot unwrap HLUSD without a provider and wallet address')
   }
 
   const wethContract = new ethers.Contract(
-    WETH_CONTRACT_ADDRESS,
-    WETH_ABI,
+    WHLUSD_CONTRACT_ADDRESS,
+    WHLUSD_ABI,
     provider
   )
 
@@ -85,9 +77,7 @@ export async function unwrapETH(eth: number) {
         .toString(),
     ]),
     from: address,
-    to: WETH_CONTRACT_ADDRESS,
-    maxFeePerGas: MAX_FEE_PER_GAS,
-    maxPriorityFeePerGas: MAX_PRIORITY_FEE_PER_GAS,
+    to: WHLUSD_CONTRACT_ADDRESS,
   }
 
   await sendTransaction(transaction)

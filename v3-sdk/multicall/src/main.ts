@@ -1,8 +1,10 @@
+import { ChainId } from '@cytoswap/sdk-core'
 import { Pool } from '@cytoswap/v3-sdk'
+import { setMulticallAddress } from 'ethers-multicall'
 import {
   getAllTicks,
   getPoolData,
-  getTickIndicesInWordRange,
+  getTickIndicesInWordRange
 } from './libs/fetcher.js'
 import { getProvider } from './libs/providers.js'
 import { tickToWordCompressed } from './libs/utils.js'
@@ -10,6 +12,9 @@ import { tickToWordCompressed } from './libs/utils.js'
 export { }
 
 async function main() {
+  // Set multicall2 contract address
+  setMulticallAddress(ChainId.HELA, '0x4b2ae074E1926bd88769277Ff494147Ee789C8ce')
+
   // Get current blocknumber and Pooldata
   const blockNum = await getProvider().getBlockNumber()
   const poolData = await getPoolData(blockNum)
@@ -28,10 +33,10 @@ async function main() {
     upperWord
   )
 
-  // Fetch all initialized ticks from tickIndices
+  // // Fetch all initialized ticks from tickIndices
   const ticks = await getAllTicks(poolData.address, tickIndices)
 
-  // Initialize Pool with full tick data
+  // // Initialize Pool with full tick data
   const fullPool = new Pool(
     poolData.tokenA,
     poolData.tokenB,
@@ -45,4 +50,4 @@ async function main() {
   console.log(fullPool.chainId)
 }
 
-await main()
+main()

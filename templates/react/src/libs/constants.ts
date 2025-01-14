@@ -1,6 +1,6 @@
-// This file stores web3 related constants such as addresses, token definitions, ETH currency references and ABI's
+// This file stores web3 related constants such as addresses, token definitions, HLUSD currency references and ABI's
 
-import { ChainId, Ether, Token } from '@cytoswap/sdk-core'
+import { ChainId, Token } from '@cytoswap/sdk-core'
 
 // Addresses
 
@@ -10,19 +10,16 @@ export const QUOTER_CONTRACT_ADDRESS =
   '0x94Cc1c1F3BBf2eB205b37a82155ca25F9c9D5621'
 export const V3_SWAP_ROUTER_ADDRESS =
   '0x86a869e601cf255D9eca76Aac93783CA3AAe7a7c'
-export const WETH_CONTRACT_ADDRESS =
+export const WHLUSD_CONTRACT_ADDRESS =
   '0x3a035615e101373FA9BA21c5bEa7FE4026fc40b4'
 
 // Currencies and Tokens
-
-export const HLUSD = Ether.onChain(ChainId.HELA)
-
-export const WETH_TOKEN = new Token(
+export const WHLUSD_TOKEN = new Token(
   ChainId.HELA,
   '0x3a035615e101373FA9BA21c5bEa7FE4026fc40b4',
   18,
-  'WHLUSD',
-  'Wrapped HLUSD'
+  'HLUSD',
+  'HLUSD'
 )
 
 export const USDC_TOKEN = new Token(
@@ -48,15 +45,10 @@ export const ERC20_ABI = [
   'event Transfer(address indexed from, address indexed to, uint amount)',
 ]
 
-export const WETH_ABI = [
-  // Wrap ETH
+export const WHLUSD_ABI = [
+  // Wrap HLUSD
   'function deposit() payable',
 
-  // Unwrap ETH
+  // Unwrap HLUSD
   'function withdraw(uint wad) public',
 ]
-
-// Transactions
-
-export const MAX_FEE_PER_GAS = 100000000000
-export const MAX_PRIORITY_FEE_PER_GAS = 100000000000

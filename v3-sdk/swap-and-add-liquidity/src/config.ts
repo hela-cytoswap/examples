@@ -34,7 +34,7 @@ export interface ExampleConfig {
 // Example Configuration
 
 export const CurrentConfig: ExampleConfig = {
-  env: Environment.MAINNET,
+  env: Environment.WALLET_EXTENSION,
   rpc: {
     local: 'http://localhost:8545',
     mainnet: 'https://mainnet-rpc.helachain.com',
@@ -46,11 +46,11 @@ export const CurrentConfig: ExampleConfig = {
   },
   tokens: {
     token0: USDC_TOKEN,
-    token0Amount: 0.0015,
+    token0Amount: 5,
     token1: USDT_TOKEN,
-    token1Amount: 0.0015,
+    token1Amount: 5,
     poolFee: FeeAmount.LOW,
-    token0AmountToAdd: 0.0015,
+    token0AmountToAdd: 1,
     token1AmountToAdd: 0,
   },
 }

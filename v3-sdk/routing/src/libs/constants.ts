@@ -1,13 +1,13 @@
-// This file stores web3 related constants such as addresses, token definitions, ETH currency references and ABI's
+// This file stores web3 related constants such as addresses, token definitions, HLUSD currency references and ABI's
 
 import { ChainId, Token } from '@cytoswap/sdk-core'
 
 // Addresses
 
 export const V3_SWAP_ROUTER_ADDRESS =
-  '0x68b3465833fb72A70ecDF485E0e4C7bD8665Fc45'
-export const WETH_CONTRACT_ADDRESS =
-  '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2'
+  '0x86a869e601cf255D9eca76Aac93783CA3AAe7a7c'
+export const WHLUSD_CONTRACT_ADDRESS =
+  '0x3a035615e101373FA9BA21c5bEa7FE4026fc40b4'
 
 // Currencies and Tokens
 
@@ -51,16 +51,13 @@ export const ERC20_ABI = [
   'event Transfer(address indexed from, address indexed to, uint amount)',
 ]
 
-export const WETH_ABI = [
-  // Wrap ETH
+export const WHLUSD_ABI = [
+  // Wrap HLUSD
   'function deposit() payable',
 
-  // Unwrap ETH
+  // Unwrap HLUSD
   'function withdraw(uint wad) public',
 ]
 
 // Transactions
-
-export const MAX_FEE_PER_GAS = 100000000000
-export const MAX_PRIORITY_FEE_PER_GAS = 100000000000
 export const TOKEN_AMOUNT_TO_APPROVE_FOR_TRANSFER = 10000

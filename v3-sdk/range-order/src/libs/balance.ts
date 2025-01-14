@@ -10,7 +10,7 @@ export async function getCurrencyBalance(
   address: string,
   currency: Currency
 ): Promise<string> {
-  // Handle ETH directly
+  // Handle HLUSD directly
   if (currency.isNative) {
     return ethers.utils.formatEther(await provider.getBalance(address))
   }

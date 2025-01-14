@@ -27,8 +27,7 @@ The configuration includes control of the environment as well as inputs to the e
 
 ### Get a mainnet RPC URL
 
-1. Create an API key using any of the [Ethereum API providers](https://docs.ethers.io/v5/api/providers/) and grab the respective RPC URL, eg `https://mainnet.infura.io/v3/0ac57a06f2994538829c14745750d721`
-2. Set that as the value of the `mainnet` `rpc` value inside the [config](./src/config.ts).
+1. Set that as the value of the `mainnet` `rpc` value inside the [config](./src/config.ts).
 
 ### Run your local chain
 
@@ -41,7 +40,7 @@ This example uses the first sample wallet offered by Foundry (listed in the term
 ### Setup a wallet browser extension
 
 1. Install a wallet browser extension
-2. Add a new manual/local network to your wallet local chain using `http://localhost:8545` for your RPC URL and `1337` for your chain ID, and `ETH` for your currency.
+2. Add a new manual/local network to your wallet local chain using `http://localhost:8545` for your RPC URL and `1337` for your chain ID, and `HLUSD` for your currency.
 3. Import your selected wallet using your private key (e.g. `0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80` from Foundry's example wallets)
 
 ### Start the web interface

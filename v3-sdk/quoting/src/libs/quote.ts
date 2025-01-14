@@ -1,5 +1,5 @@
 import ICytoswapV3PoolABI from '@cytoswap/v3-core/artifacts/contracts/interfaces/ICytoswapV3Pool.sol/ICytoswapV3Pool.json'
-import Quoter from '@cytoswap/v3-periphery/artifacts/contracts/lens/Quoter.sol/Quoter.json'
+import Quoter from '@cytoswap/v3-periphery/artifacts/contracts/lens/QuoterV2.sol/QuoterV2.json'
 import { computePoolAddress } from '@cytoswap/v3-sdk'
 import { ethers } from 'ethers'
 import { CurrentConfig } from '../config'
@@ -18,18 +18,20 @@ export async function quote(): Promise<string> {
   )
   const poolConstants = await getPoolConstants()
 
-  const quotedAmountOut = await quoterContract.callStatic.quoteExactInputSingle(
-    poolConstants.token0,
-    poolConstants.token1,
-    poolConstants.fee,
-    fromReadableAmount(
+  const params = {
+    tokenIn: CurrentConfig.tokens.in.address,
+    tokenOut: CurrentConfig.tokens.out.address,
+    fee: poolConstants.fee,
+    amountIn: fromReadableAmount(
       CurrentConfig.tokens.amountIn,
       CurrentConfig.tokens.in.decimals
     ).toString(),
-    0
-  )
+    sqrtPriceLimitX96: 0,
+  }
 
-  return toReadableAmount(quotedAmountOut, CurrentConfig.tokens.out.decimals)
+  const result = await quoterContract.callStatic.quoteExactInputSingle(params)
+
+  return toReadableAmount(result.amountOut, CurrentConfig.tokens.out.decimals)
 }
 
 async function getPoolConstants(): Promise<{

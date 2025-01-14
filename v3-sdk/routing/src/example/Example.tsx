@@ -8,7 +8,7 @@ import {
   TransactionState,
 } from '../libs/providers'
 import { executeRoute, generateRoute } from '../libs/routing'
-import { getCurrencyBalance, wrapETH } from '../libs/wallet'
+import { getCurrencyBalance, wrapHLUSD } from '../libs/wallet'
 import './Example.css'
 
 const useOnBlockUpdated = (callback: (blockNumber: number) => void) => {
@@ -114,9 +114,9 @@ const Example = () => {
             .join(', ')}
       </h3>
       <button
-        onClick={() => wrapETH(100)}
+        onClick={() => wrapHLUSD(100)}
         disabled={getProvider() === null || CurrentConfig.rpc.mainnet === ''}>
-        <p>Wrap ETH</p>
+        <p>Wrap HLUSD</p>
       </button>
       <button
         onClick={() => executeSwap(route)}

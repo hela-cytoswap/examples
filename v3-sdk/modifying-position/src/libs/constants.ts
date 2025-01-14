@@ -5,9 +5,9 @@ import { ChainId, Token } from '@cytoswap/sdk-core'
 // Addresses
 
 export const POOL_FACTORY_CONTRACT_ADDRESS =
-  '0x1F98431c8aD98523631AE4a59f267346ea31F984'
+  '0x0c0cf6c2901B23762fA3eEccC4F6d1912B08719E'
 export const NONFUNGIBLE_POSITION_MANAGER_CONTRACT_ADDRESS =
-  '0xC36442b4a4522E871399CD717aBDD847Ab11FE88'
+  '0xA0AfADE4B0481C6fF44E26e3Fe75c8AcC54842CA'
 
 // Currencies and Tokens
 
@@ -29,8 +29,6 @@ export const USDT_TOKEN = new Token(
 
 // Transactions
 
-export const MAX_FEE_PER_GAS = '100000000000'
-export const MAX_PRIORITY_FEE_PER_GAS = '100000000000'
 export const TOKEN_AMOUNT_TO_APPROVE_FOR_TRANSFER = 1000000000000
 
 // ABI's

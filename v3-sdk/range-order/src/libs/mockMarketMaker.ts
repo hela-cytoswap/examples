@@ -15,12 +15,10 @@ import { CurrentConfig } from '../config'
 import { getCurrencyBalance } from './balance'
 import {
   ERC20_ABI,
-  MAX_FEE_PER_GAS,
-  MAX_PRIORITY_FEE_PER_GAS,
   POOL_FACTORY_CONTRACT_ADDRESS,
   QUOTER_CONTRACT_ADDRESS,
   V3_SWAP_ROUTER_ADDRESS,
-  WETH_ABI,
+  WHLUSD_ABI,
   WHLUSD_CONTRACT_ADDRESS,
 } from './constants'
 import { fromReadableAmount } from './conversion'
@@ -107,8 +105,6 @@ export async function buyWETH() {
       to: V3_SWAP_ROUTER_ADDRESS,
       value: methodParameters.value,
       from: CurrentConfig.mockMarketMakerWallet.address,
-      maxFeePerGas: MAX_FEE_PER_GAS,
-      maxPriorityFeePerGas: MAX_PRIORITY_FEE_PER_GAS,
       gasLimit: '1000000',
     }
 
@@ -187,8 +183,6 @@ export async function sellWETH() {
       to: V3_SWAP_ROUTER_ADDRESS,
       value: methodParameters.value,
       from: CurrentConfig.mockMarketMakerWallet.address,
-      maxFeePerGas: MAX_FEE_PER_GAS,
-      maxPriorityFeePerGas: MAX_PRIORITY_FEE_PER_GAS,
       gasLimit: '1000000',
     }
 
@@ -288,8 +282,6 @@ export async function getToken1FromMockPool(sellETHAmount: number) {
     to: V3_SWAP_ROUTER_ADDRESS,
     value: methodParameters.value,
     from: CurrentConfig.mockMarketMakerWallet.address,
-    maxFeePerGas: MAX_FEE_PER_GAS,
-    maxPriorityFeePerGas: MAX_PRIORITY_FEE_PER_GAS,
     gasLimit: '1000000',
   }
 
@@ -354,7 +346,7 @@ async function wrapETHMMM(eth: number) {
 
   const wethContract = new ethers.Contract(
     WHLUSD_CONTRACT_ADDRESS,
-    WETH_ABI,
+    WHLUSD_ABI,
     wallet
   )
 
@@ -365,8 +357,6 @@ async function wrapETHMMM(eth: number) {
       .toString(),
     from: address,
     to: WHLUSD_CONTRACT_ADDRESS,
-    maxFeePerGas: MAX_FEE_PER_GAS,
-    maxPriorityFeePerGas: MAX_PRIORITY_FEE_PER_GAS,
     gasLimit: '1000000',
   }
 

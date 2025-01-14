@@ -1,5 +1,5 @@
 import { Currency } from '@cytoswap/sdk-core'
-import { HLUSD, USDC_TOKEN } from './libs/constants'
+import { USDC_TOKEN, WHLUSD_TOKEN } from './libs/constants'
 
 // Sets if the example should run locally or on chain
 export enum Environment {
@@ -40,7 +40,7 @@ export const CurrentConfig: ExampleConfig = {
       '0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80',
   },
   currencies: {
-    in: HLUSD,
+    in: WHLUSD_TOKEN,
     amountIn: 1,
     out: USDC_TOKEN,
   },

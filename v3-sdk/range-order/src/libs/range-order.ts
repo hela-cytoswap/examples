@@ -19,11 +19,7 @@ import {
 import { ethers } from 'ethers'
 import JSBI from 'jsbi'
 import { CurrentConfig } from '../config'
-import {
-  MAX_FEE_PER_GAS,
-  MAX_PRIORITY_FEE_PER_GAS,
-  NONFUNGIBLE_POSITION_MANAGER_CONTRACT_ADDRESS,
-} from './constants'
+import { NONFUNGIBLE_POSITION_MANAGER_CONTRACT_ADDRESS } from './constants'
 import { fromReadableAmount } from './conversion'
 import { getPoolInfo, getPrice } from './pool'
 import { getPositionInfo, getTokenTransferApproval } from './positions'
@@ -110,8 +106,6 @@ export async function watchTakeProfitOrder(
       to: NONFUNGIBLE_POSITION_MANAGER_CONTRACT_ADDRESS,
       value: value,
       from: address,
-      maxFeePerGas: MAX_FEE_PER_GAS,
-      maxPriorityFeePerGas: MAX_PRIORITY_FEE_PER_GAS,
       gasLimit: '1000000',
     }
 
@@ -172,8 +166,6 @@ export async function mintTakeProfitOrder(
     to: NONFUNGIBLE_POSITION_MANAGER_CONTRACT_ADDRESS,
     value: ethers.BigNumber.from(value),
     from: address,
-    maxFeePerGas: MAX_FEE_PER_GAS,
-    maxPriorityFeePerGas: MAX_PRIORITY_FEE_PER_GAS,
     gasLimit: '1000000',
   }
 
