@@ -59,7 +59,7 @@ export const CurrentConfig: ExampleConfig = {
     token0Amount: 1,
     token1: USDT_TOKEN,
     token1Amount: 0,
-    poolFee: FeeAmount.HIGH,
+    poolFee: FeeAmount.LOWEST,
   },
   targetPercentageUp: 5,
   mockMarketMakerWallet: {
